@@ -5,9 +5,9 @@ import AddressCard from "../cards/AddressCard";
 const Section5 = () => {
   return (
     <>
-      <div className="w-[90%] mx-auto">
+      <div className="w-[90%] mx-auto table-section">
         <h1>Important Notes</h1>
-        <div className="flex flex-wrap justify-center gap-4 p-4">
+        <div className="flex flex-wrap justify-center gap-4 p-4 table-content">
           <BookingListCard
             className="flex-1"
             title="Point"
@@ -32,9 +32,9 @@ const Section5 = () => {
           />
         </div>
       </div>
-      <div className="w-[90%] mx-auto">
+      <div className="w-[90%] mx-auto table-section">
         <h1>Scope of Service</h1>
-        <div className="flex flex-wrap justify-center gap-4 p-4">
+        <div className="flex flex-wrap justify-center gap-4 p-4 table-content">
           <BookingListCard
             className="flex-1"
             title="Service"
@@ -59,9 +59,9 @@ const Section5 = () => {
           />
         </div>
       </div>
-      <div className="w-[90%] mx-auto">
+      <div className="w-[90%] mx-auto table-section">
         <h1>Inclusion Summary</h1>
-        <div className="flex flex-wrap justify-center gap-4 p-4">
+        <div className="flex flex-wrap justify-center gap-4 p-4 table-content">
           <BookingListCard
             className="flex-1"
             title="Category"

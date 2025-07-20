@@ -11,9 +11,9 @@ const Section1 = ({
   noOfTravellers
 }) => {
   return (
-    <div className="w-full h-screen flex flex-col items-center justify-center">
+    <div className="w-full h-screen flex flex-col items-center justify-center first-page">
       <div className="flex-1 w-[90%] flex items-center justify-center">
-        <img className='h-30 w-auto' src="/assets/Group 116.png" alt="logo" />
+        <img className='h-30 w-auto logo first-page-logo' src="/assets/Group 116.png" alt="logo" />
       </div>
       <div className="flex-2 w-[90%] bg-gradient-to-br from-[#9e7de4] to-[#3e1f4b] text-white flex flex-col gap-2 items-center justify-center border rounded-4xl">
         <h1>Hi, {name}!</h1>

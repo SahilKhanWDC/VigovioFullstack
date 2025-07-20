@@ -6,35 +6,37 @@ import BookingListCard from "../cards/BookingListCard";
 const Section7 = () => {
   return (
     <>
-      <div className="w-[90%] mx-auto flex flex-col gap-4 pb-20">
-        <AddressCard className="my-20" />
-        <h1>Payment plan</h1>
-        <FlightInfoCard />
-        <FlightInfoCard />
-        <div className="flex flex-wrap justify-center gap-4 p-4">
-          <BookingListCard
-            className="flex-1"
-            title="Installment"
-            items={["Installment 1", "Installment 2", "Installment 3"]}
-          />
-          <BookingListCard
-            className="flex-2"
-            title="Amount"
-            items={["3,50,000", "2,50,000", "Remaining"]}
-          />
-          <BookingListCard
-            className="flex-1"
-            title="Due Date"
-            items={[
-              "Initial payment",
-              "post visa approval",
-              "20 days before travel",
-            ]}
-          />
+      <div className="w-[90%] mx-auto flex flex-col gap-4 pb-20 section7-container">
+        <AddressCard className="my-20 address-spacing" />
+        <div className="table-section">
+          <h1>Payment plan</h1>
+          <FlightInfoCard />
+          <FlightInfoCard />
+          <div className="flex flex-wrap justify-center gap-4 p-4 table-content">
+            <BookingListCard
+              className="flex-1"
+              title="Installment"
+              items={["Installment 1", "Installment 2", "Installment 3"]}
+            />
+            <BookingListCard
+              className="flex-2"
+              title="Amount"
+              items={["3,50,000", "2,50,000", "Remaining"]}
+            />
+            <BookingListCard
+              className="flex-1"
+              title="Due Date"
+              items={[
+                "Initial payment",
+                "post visa approval",
+                "20 days before travel",
+              ]}
+            />
+          </div>
         </div>
-        <div>
+        <div className="table-section">
           <h1>Visa Information</h1>
-          <div className="flex text-center justify-around py-2 border-1 rounded-2xl">
+          <div className="flex text-center justify-around py-2 border-1 rounded-2xl table-content">
             <div>
               <h5>Visa type</h5>
               <p>Tourist</p>

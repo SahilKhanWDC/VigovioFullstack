@@ -1,24 +1,38 @@
-import React from 'react'
-import Section1 from './components/screen1/Section1'
-import Section2 from './components/screen1/Section2'
-import Section3 from './components/screen1/Section3'
-import Section4 from './components/screen1/Section4'
-import Section5 from './components/screen1/Section5'
-import Section6 from './components/screen1/Section6'
-import Section7 from './components/screen1/Section7'
+import React, { useState, useEffect } from 'react'
+import BookingForm from './components/BookingForm1'
+import TravelItinerary from './components/TravelItinerary'
 
 const App = () => {
-  return (
-    <>
-      <Section1/>
-      <Section2/>
-      <Section3/>
-      <Section4/>
-      <Section5/>
-      <Section6/>
-      <Section7/>
-    </>
-  )
+  const [currentView, setCurrentView] = useState('form');
+
+  useEffect(() => {
+    // Check URL path to determine which view to show
+    const path = window.location.pathname;
+    if (path === '/itinerary') {
+      setCurrentView('itinerary');
+    } else {
+      setCurrentView('form');
+    }
+
+    // Listen for popstate events (back/forward navigation)
+    const handlePopState = () => {
+      const path = window.location.pathname;
+      if (path === '/itinerary') {
+        setCurrentView('itinerary');
+      } else {
+        setCurrentView('form');
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  if (currentView === 'itinerary') {
+    return <TravelItinerary />;
+  }
+
+  return <BookingForm />;
 }
 
 export default App

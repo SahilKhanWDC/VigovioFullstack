@@ -4,9 +4,9 @@ import BookingListCard from "../cards/BookingListCard";
 const Section6 = () => {
   return (
     <>
-      <div className="w-[90%] mx-auto pb-20">
+      <div className="w-[90%] mx-auto pb-20 table-section section6-container">
         <h1>Activity table</h1>
-        <div className="flex flex-wrap justify-center gap-4 p-4">
+        <div className="flex flex-wrap justify-center gap-4 p-4 table-content">
           <BookingListCard
             className="flex-1"
             title="City"
@@ -28,8 +28,10 @@ const Section6 = () => {
             items={["2 hours", "1 day", "3 hours", "4 hours", "5 hours", "6 hours", "7 hours", "8 hours", "9 hours", "10 hours"]}
           />
         </div>
-        <h2>Terms and Conditions</h2>
-        <a className='text-blue-500 text-2xl underline' href="#">View Terms and Conditions</a>
+        <div className="table-section">
+          <h2>Terms and Conditions</h2>
+          <a className='text-blue-500 text-2xl underline' href="#">View Terms and Conditions</a>
+        </div>
       </div>
     </>
   )

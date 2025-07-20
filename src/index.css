@@ -1,1 +1,657 @@
 @import "tailwindcss";
+
+/* Custom styles for the booking form */
+.input {
+  @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+}
+
+/* Logo sizing for PDF compatibility */
+.logo {
+  max-width: 200px !important;
+  max-height: 200px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+/* Print styles for the travel itinerary */
+@media print {
+  .print\:hidden {
+    display: none !important;
+  }
+  
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  @page {
+    margin: 0.5in;
+    size: A4;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background: white !important;
+  }
+  
+  /* Logo specific sizing for print */
+  .logo, img.logo {
+    max-width: 150px !important;
+    max-height: 100px !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+  
+  /* First page logo - make it larger */
+  .first-page-logo {
+    max-width: 400px !important;
+    max-height: 300px !important;
+    width: auto !important;
+    height: auto !important;
+  }
+  
+  .first-page .logo {
+    max-width: 400px !important;
+    max-height: 300px !important;
+  }
+  
+  /* Hide control buttons in PDF */
+  .print\:hidden {
+    display: none !important;
+  }
+  
+  /* Hide any fixed positioned elements (buttons) */
+  .fixed {
+    display: none !important;
+  }
+  
+  /* Additional button hiding */
+  .no-print {
+    display: none !important;
+  }
+  
+  button {
+    display: none !important;
+  }
+  
+  /* Exception for buttons that should appear in content */
+  .content button {
+    display: inline-block !important;
+  }
+  
+  /* Booking cards - prevent breaks and reduce gaps */
+  .booking-card {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 8px !important;
+    font-size: 11px !important;
+    padding: 3mm !important;
+    width: auto !important;
+    min-width: 15% !important;
+    max-width: 25% !important;
+  }
+  
+  /* Smaller text specifically for booking cards in tables */
+  .booking-card .list-group-item {
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+    padding: 3px 5px !important;
+    margin-bottom: 1px !important;
+  }
+  
+  .booking-card .list-group-item.active {
+    font-size: 11px !important;
+    font-weight: bold !important;
+  }
+  
+  /* Reduce gaps between flex items */
+  .gap-4 {
+    gap: 8px !important;
+  }
+  
+  .gap-6 {
+    gap: 12px !important;
+  }
+  
+  /* PDF-specific spacing adjustments for AddressCard */
+  .border-t {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+  }
+  
+  .px-6 {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
+  .py-4 {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+  }
+  
+  /* Remove excessive margins in PDF */
+  .mt-4 {
+    margin-top: 4px !important;
+  }
+  
+  .mt-6 {
+    margin-top: 6px !important;
+  }
+  
+  /* Make flex layout more compact in PDF */
+  .flex-col {
+    gap: 4px !important;
+  }
+  
+  .md\:flex-row {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+  
+  /* Compact text spacing */
+  .text-sm {
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+  }
+  
+  p {
+    margin-bottom: 2px !important;
+  }
+  
+  /* Specific AddressCard PDF styling */
+  .address-card {
+    padding: 8px 16px !important;
+    min-height: auto !important;
+  }
+  
+  .address-card .company-info,
+  .address-card .contact-info,
+  .address-card .logo-section {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+  
+  .address-card .company-info p,
+  .address-card .contact-info p {
+    margin-bottom: 1px !important;
+    line-height: 1.1 !important;
+  }
+  
+  /* Force horizontal layout in PDF */
+  .address-card.flex-col {
+    flex-direction: row !important;
+  }
+  
+  .address-card .mt-4,
+  .address-card .mt-6 {
+    margin-top: 0px !important;
+  }
+  
+  /* Prevent page breaks in tables and sections */
+  .table-section {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  
+  .table-section h1,
+  .table-section h2 {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+  
+  .table-content {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  
+  /* Keep flex table layouts together */
+  .flex-wrap {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    gap: 2px !important;
+    justify-content: space-between !important;
+  }
+  
+  /* Make table containers more compact and keep all columns together */
+  .table-content {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 1mm !important;
+    width: 100% !important;
+  }
+  
+  .table-content .flex-1 {
+    flex: 1 1 20% !important;
+    min-width: 15% !important;
+    max-width: 22% !important;
+  }
+  
+  .table-content .flex-2 {
+    flex: 1 1 25% !important;
+    min-width: 20% !important;
+    max-width: 30% !important;
+  }
+  
+  /* Activity table specific - force all columns on one line */
+  .section6-container .table-content {
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+  }
+  
+  .section6-container .booking-card {
+    font-size: 10px !important;
+    min-width: 18% !important;
+    max-width: 23% !important;
+  }
+  
+  .section6-container .list-group-item {
+    font-size: 9px !important;
+    padding: 2px 4px !important;
+  }
+  
+  .section6-container .list-group-item.active {
+    font-size: 10px !important;
+  }
+  
+  /* Ensure sections don't break at inappropriate places */
+  .section-container {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  
+  /* Reduce excessive spacing between sections */
+  .pb-20 {
+    padding-bottom: 8px !important;
+  }
+  
+  .my-6 {
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+  }
+  
+  .my-20 {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+  }
+  
+  /* Minimize gaps between components */
+  .gap-4 {
+    gap: 4px !important;
+  }
+  
+  .gap-6 {
+    gap: 6px !important;
+  }
+  
+  /* Reduce section spacing */
+  .mx-auto {
+    margin-bottom: 6px !important;
+  }
+  
+  /* Compact flex layouts */
+  .flex.flex-col {
+    gap: 6px !important;
+  }
+  
+  /* Reduce padding in sections */
+  .w-\[90\%\] {
+    margin-bottom: 8px !important;
+  }
+  
+  /* Additional spacing fixes for PDF */
+  hr {
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+  }
+  
+  /* Compact table sections */
+  .table-section {
+    margin-bottom: 6px !important;
+    padding-bottom: 4px !important;
+  }
+  
+  .table-section h1 {
+    margin-bottom: 4px !important;
+    margin-top: 6px !important;
+  }
+  
+  .table-section h2 {
+    margin-bottom: 2px !important;
+    margin-top: 4px !important;
+  }
+  
+  /* Remove excessive padding from flex containers */
+  .p-4 {
+    padding: 6px !important;
+  }
+  
+  .p-6 {
+    padding: 8px !important;
+  }
+  
+  /* Minimize vertical spacing in components */
+  .flex-col .gap-4 {
+    gap: 2px !important;
+  }
+  
+  /* Specific fixes for Section7 spacing */
+  .section7-container {
+    gap: 6px !important;
+    padding-bottom: 8px !important;
+  }
+  
+  .address-spacing {
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+  }
+  
+  /* Flight info cards spacing */
+  .flight-card {
+    margin-bottom: 4px !important;
+  }
+  
+  /* General section gap reduction */
+  .w-\[90\%\].mx-auto {
+    margin-bottom: 4px !important;
+  }
+  
+  /* Section6 Activity table spacing - remove all gaps above */
+  .section6-container {
+    padding-bottom: 8px !important;
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+  }
+  
+  .section6-container h1 {
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+  }
+  
+  /* Override global spacing rules specifically for section6 */
+  .section6-container.w-\[90\%\].mx-auto {
+    margin-top: 0px !important;
+    margin-bottom: 4px !important;
+  }
+  
+  .section6-container.table-section {
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+  }
+  
+  /* Global spacing compression for PDF */
+  * {
+    margin-top: 0 !important;
+  }
+  
+  h1:not(:first-child) {
+    margin-top: 8px !important;
+  }
+  
+  /* Override for Activity table h1 - no top margin */
+  .section6-container h1 {
+    margin-top: 0px !important;
+  }
+  
+  h2:not(:first-child) {
+    margin-top: 6px !important;
+  }
+  
+  .travel-itinerary {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: white !important;
+  }
+  
+  /* Maintain original sizing but ensure proper page breaks */
+  .h-screen {
+    height: auto !important;
+    min-height: auto !important;
+  }
+  
+  /* Keep shadows for visual consistency */
+  .shadow-md, .shadow-lg {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  }
+  
+  /* Ensure gradients work in print */
+  .bg-gradient-to-br {
+    background: linear-gradient(to bottom right, #9e7de4, #3e1f4b) !important;
+    color: white !important;
+  }
+  
+  /* Ensure borders are visible */
+  .border, .border-1, .border-2 {
+    border: 1px solid #d1d5db !important;
+  }
+  
+  .border-t {
+    border-top: 1px solid #d1d5db !important;
+  }
+  
+  .border-purple-400 {
+    border-color: #a855f7 !important;
+  }
+  
+  /* Ensure background colors are preserved */
+  .bg-white {
+    background-color: white !important;
+  }
+  
+  .bg-purple-100 {
+    background-color: #f3e8ff !important;
+  }
+  
+  .bg-purple-600 {
+    background-color: #9333ea !important;
+  }
+  
+  .bg-blue-600 {
+    background-color: #2563eb !important;
+  }
+  
+  /* Text colors */
+  .text-white {
+    color: white !important;
+  }
+  
+  .text-purple-600 {
+    color: #9333ea !important;
+  }
+  
+  .text-purple-900 {
+    color: #581c87 !important;
+  }
+  
+  .text-gray-800 {
+    color: #1f2937 !important;
+  }
+  
+  .text-gray-600 {
+    color: #4b5563 !important;
+  }
+  
+  .text-gray-700 {
+    color: #374151 !important;
+  }
+  
+  .text-black {
+    color: black !important;
+  }
+  
+  .text-blue-500 {
+    color: #3b82f6 !important;
+  }
+  
+  /* Ensure rounded corners are preserved */
+  .rounded-lg {
+    border-radius: 0.5rem !important;
+  }
+  
+  .rounded-2xl {
+    border-radius: 1rem !important;
+  }
+  
+  .rounded-4xl {
+    border-radius: 2rem !important;
+  }
+  
+  .rounded-full {
+    border-radius: 9999px !important;
+  }
+  
+  .rounded-md {
+    border-radius: 0.375rem !important;
+  }
+  
+  /* Ensure images maintain their size */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Specific background colors for components */
+  .bg-\[#2F215F\] {
+    background-color: #2F215F !important;
+  }
+  
+  /* Page break controls */
+  .no-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Ensure flex layouts work properly */
+  .flex {
+    display: flex !important;
+  }
+  
+  .flex-col {
+    flex-direction: column !important;
+  }
+  
+  .flex-row {
+    flex-direction: row !important;
+  }
+  
+  .items-center {
+    align-items: center !important;
+  }
+  
+  .justify-center {
+    justify-content: center !important;
+  }
+  
+  .justify-between {
+    justify-content: space-between !important;
+  }
+  
+  .justify-around {
+    justify-content: space-around !important;
+  }
+  
+  .flex-1 {
+    flex: 1 1 0% !important;
+  }
+  
+  .flex-2 {
+    flex: 2 1 0% !important;
+  }
+  
+  /* Ensure text alignment works */
+  .text-center {
+    text-align: center !important;
+  }
+  
+  .text-left {
+    text-align: left !important;
+  }
+  
+  /* Ensure font weights are preserved */
+  .font-bold {
+    font-weight: 700 !important;
+  }
+  
+  .font-semibold {
+    font-weight: 600 !important;
+  }
+  
+  /* Ensure transforms work */
+  .transform {
+    transform: var(--tw-transform) !important;
+  }
+  
+  .-rotate-90 {
+    transform: rotate(-90deg) !important;
+  }
+  
+  /* Ensure list styling is preserved */
+  .list-disc {
+    list-style-type: disc !important;
+  }
+  
+  .list-group-item {
+    position: relative;
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #212529;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+  }
+  
+  .list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+  }
+  
+  /* Ensure underlines work */
+  .underline {
+    text-decoration: underline !important;
+  }
+  
+  /* Remove hover effects in print */
+  .hover\:bg-blue-700:hover,
+  .hover\:bg-purple-800:hover,
+  .hover\:bg-gray-700:hover {
+    background-color: inherit !important;
+  }
+  
+  /* Ensure spacing is maintained */
+  .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 1rem !important;
+  }
+  
+  /* Ensure tracking is preserved */
+  .tracking-wide {
+    letter-spacing: 0.025em !important;
+  }
+  
+  /* Ensure overflow is handled */
+  .overflow-hidden {
+    overflow: hidden !important;
+  }
+  
+  /* Ensure positioning works */
+  .relative {
+    position: relative !important;
+  }
+  
+  .absolute {
+    position: absolute !important;
+  }
+  
+  /* Ensure z-index works */
+  .z-50 {
+    z-index: 50 !important;
+  }
+}
