@@ -60,6 +60,7 @@ export default function BookingForm() {
           name="departureDate"
           value={form.departureDate}
           onChange={handleChange}
+          placeholder="Departure Date"
           className="input"
           required
         />

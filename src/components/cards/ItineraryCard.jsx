@@ -1,20 +1,20 @@
 import React from 'react';
 
-const ItineraryCard = () => {
+const ItineraryCard = ({num}) => {
   return (
     <div className="flex w-[90%] border rounded-lg shadow-md overflow-hidden bg-white">
       
       {/* Left Column */}
       <div className="bg-[#2F215F] text-white flex flex-col justify-center items-center px-4 py-8 min-w-[80px]">
         <div className="transform -rotate-90 text-lg font-semibold tracking-wide whitespace-nowrap">
-          Day 1
+          Day {num}
         </div>
       </div>
 
       {/* Middle Column with Image and Date */}
       <div className="flex flex-col items-center justify-center px-4 py-6 border-r">
         <img
-          src="/assets/day1.jpg" // replace with your actual image path
+          src="/assets/pexels-pixabay-158063.jpg" // replace with your actual image path
           alt="Singapore"
           className="w-24 h-24 rounded-full object-cover"
         />
